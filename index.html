@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>For Suhaila</title>
+<meta name="description" content="A little birthday gift, made just for you." />
+<meta name="theme-color" content="#05070f" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Persistent canvas layer for stars + fireworks, sits behind all content -->
+  <canvas id="sky-canvas" aria-hidden="true"></canvas>
+
+  <!-- Sound toggle, hidden until audio is actually available -->
+  <button id="sound-toggle" class="sound-toggle" type="button" aria-label="Toggle music" hidden>
+    <span class="sound-icon" aria-hidden="true">♪</span>
+  </button>
+
+  <main id="story">
+
+    <!-- SCENE 1 — OPENING -->
+    <section id="scene-open" class="scene scene--open" aria-label="Opening">
+      <div class="scene__inner">
+        <p class="whisper">I made you something&hellip;</p>
+        <button id="open-btn" class="open-btn" type="button">
+          <span>Open your birthday surprise</span>
+          <span class="open-btn__icon" aria-hidden="true">🎁</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCENE 2 — FIREWORKS + HEADLINE -->
+    <section id="scene-fireworks" class="scene scene--fireworks" aria-label="Happy Birthday">
+      <div class="scene__inner">
+        <h1 id="headline" class="headline">HAPPY BIRTH DAY, SUHAILA!</h1>
+      </div>
+    </section>
+
+    <!-- SCENE 3 — CHILDHOOD PHOTO -->
+    <section id="scene-childhood" class="scene scene--reveal" aria-label="Childhood photo">
+      <div class="scene__inner">
+        <p class="line reveal-on-scroll">Before you became who you are today&hellip;</p>
+        <figure class="frame reveal-on-scroll">
+          <img
+            src="assets/suhaila-childhood.jpg"
+            alt="Suhaila as a child"
+            loading="lazy"
+            width="900"
+            height="1100"
+            onerror="this.closest('.frame').classList.add('frame--missing')"
+          />
+        </figure>
+        <p class="caption reveal-on-scroll">Look at you 🥹</p>
+      </div>
+    </section>
+
+    <!-- SCENE 4 — PRESENT DAY -->
+    <section id="scene-present" class="scene scene--reveal" aria-label="Present day photo">
+      <div class="scene__inner">
+        <p class="line reveal-on-scroll">And somehow, you grew up&hellip;</p>
+        <figure class="frame reveal-on-scroll">
+          <img
+            src="assets/suhaila-current.jpg"
+            alt="Suhaila today"
+            loading="lazy"
+            width="900"
+            height="1100"
+            onerror="this.closest('.frame').classList.add('frame--missing')"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <!-- SCENE 5 — THE MOON -->
+    <section id="scene-moon" class="scene scene--moon" aria-label="The moon">
+      <div class="scene__inner">
+        <figure class="moon-frame reveal-on-scroll">
+          <img
+            src="assets/moon.jpg"
+            alt="The moon"
+            loading="lazy"
+            width="800"
+            height="800"
+            onerror="this.closest('.moon-frame').classList.add('moon-frame--missing')"
+          />
+        </figure>
+        <p class="line line--moon reveal-on-scroll">Somewhere under the same moon&hellip;</p>
+        <p class="line line--moon reveal-on-scroll">&hellip;a very special person was born.</p>
+      </div>
+    </section>
+
+    <!-- SCENE 6 — CAKE -->
+    <section id="scene-cake" class="scene scene--reveal" aria-label="Cake">
+      <div class="scene__inner">
+        <p class="line reveal-on-scroll">I wish I could&rsquo;ve made you a cake&hellip;</p>
+        <p class="line line--soft reveal-on-scroll">But you&rsquo;re in America and I&rsquo;m in Egypt 😂</p>
+        <figure class="frame frame--cake reveal-on-scroll">
+          <img
+            src="assets/hamilton-cake.jpg"
+            alt="A Hamilton-themed cake"
+            loading="lazy"
+            width="768"
+            height="1365"
+            onerror="this.closest('.frame').classList.add('frame--missing')"
+          />
+        </figure>
+        <p class="caption reveal-on-scroll">So&hellip; this will have to do. 🎂</p>
+      </div>
+    </section>
+
+    <!-- SCENE 7 — FINAL MESSAGE -->
+    <section id="scene-final" class="scene scene--final" aria-label="Final message">
+      <div class="scene__inner">
+        <p class="final-title reveal-on-scroll">Happy Birthday, Suhaila ❤️</p>
+        <p class="final-sub reveal-on-scroll">I hope your day is as beautiful as you are.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
