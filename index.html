@@ -88,6 +88,7 @@
         </figure>
         <p class="line line--moon reveal-on-scroll">Somewhere under the same moon&hellip;</p>
         <p class="line line--moon reveal-on-scroll">&hellip;a very special person was born.</p>
+        <p class="moon-caption reveal-on-scroll">Moon phase &mdash; October 25, 2007</p>
       </div>
     </section>
 
@@ -109,6 +110,36 @@
         <p class="caption reveal-on-scroll">So&hellip; this will have to do. 🎂</p>
       </div>
     </section>
+
+    <!-- SCENE 6.5 — TWO LITTLE LETTERS -->
+    <section id="scene-letters" class="scene scene--letters" aria-label="Two little letters">
+      <div class="scene__inner">
+        <p class="line reveal-on-scroll">Two little things I wanted you to have&hellip;</p>
+        <div class="envelopes reveal-on-scroll">
+          <button class="envelope" type="button" data-letter="letter-1" aria-haspopup="dialog">
+            <span class="envelope__label">Open</span>
+          </button>
+          <button class="envelope" type="button" data-letter="letter-2" aria-haspopup="dialog">
+            <span class="envelope__label">Open</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Letter overlays: hidden by default, opened by their envelope button -->
+    <div class="letter-overlay" id="letter-1" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="letter-card">
+        <button class="letter-close" type="button" aria-label="Close letter">&times;</button>
+        <p class="letter-text">I couldn&rsquo;t give you the cake you wanted, so I made sure at least a little piece of my heart made it to you. &#10084;&#65039;</p>
+      </div>
+    </div>
+
+    <div class="letter-overlay" id="letter-2" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="letter-card">
+        <button class="letter-close" type="button" aria-label="Close letter">&times;</button>
+        <p class="letter-text">And if I could wish for one thing today, it&rsquo;d be to see that smile in person someday. &#10084;&#65039;</p>
+      </div>
+    </div>
 
     <!-- SCENE 7 — FINAL MESSAGE -->
     <section id="scene-final" class="scene scene--final" aria-label="Final message">
