@@ -236,6 +236,48 @@
   }
 
   /* ------------------------------------------------------------
+     Two little letters — envelope buttons open a small overlay
+     card; closed via the × button, a backdrop tap, or Escape.
+     ------------------------------------------------------------ */
+  function openLetter(overlay) {
+    overlay.classList.add("is-open");
+    overlay.setAttribute("aria-hidden", "false");
+    var closeBtn = overlay.querySelector(".letter-close");
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeLetter(overlay) {
+    overlay.classList.remove("is-open");
+    overlay.setAttribute("aria-hidden", "true");
+  }
+
+  document.querySelectorAll(".envelope").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var overlay = document.getElementById(btn.getAttribute("data-letter"));
+      if (overlay) openLetter(overlay);
+    });
+  });
+
+  document.querySelectorAll(".letter-overlay").forEach(function (overlay) {
+    var closeBtn = overlay.querySelector(".letter-close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function () {
+        closeLetter(overlay);
+      });
+    }
+    // tapping the dimmed backdrop (not the card itself) also closes it
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) closeLetter(overlay);
+    });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".letter-overlay.is-open").forEach(closeLetter);
+    }
+  });
+
+  /* ------------------------------------------------------------
      Scroll reveals — IntersectionObserver, fires once per element
      ------------------------------------------------------------ */
   var revealTargets = document.querySelectorAll(".reveal-on-scroll");
