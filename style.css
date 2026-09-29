@@ -338,6 +338,15 @@ button {
   max-width: 26ch;
 }
 
+.moon-caption {
+  margin: 0.25rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--star-dim);
+}
+
 /* ------------------------------------------------------------
    Scene 7 — Final
    ------------------------------------------------------------ */
@@ -377,6 +386,164 @@ button {
 /* stagger children slightly within a scene */
 .scene__inner .reveal-on-scroll:nth-child(2) { transition-delay: 0.12s; }
 .scene__inner .reveal-on-scroll:nth-child(3) { transition-delay: 0.24s; }
+
+/* ------------------------------------------------------------
+   Two little letters — envelope buttons + reveal overlay
+   ------------------------------------------------------------ */
+.envelopes {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.envelope {
+  position: relative;
+  width: 128px;
+  height: 90px;
+  min-height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(160deg, var(--night-lift), var(--night-soft));
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.6rem;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* envelope flap, drawn as a V using two diagonal gradients */
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 58%;
+  background:
+    linear-gradient(135deg, var(--glass-border) 49.5%, transparent 50.5%),
+    linear-gradient(-135deg, var(--glass-border) 49.5%, transparent 50.5%);
+  background-size: 50% 100%;
+  background-position: left top, right top;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+}
+
+/* wax-seal dot where the flap meets */
+.envelope::after {
+  content: "";
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(217, 184, 119, 0.55);
+}
+
+.envelope__label {
+  position: relative;
+  z-index: 1;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--star-dim);
+}
+
+.envelope:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) {
+  .envelope:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.envelope:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.letter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(1.5rem, var(--safe-t) + 1.5rem) max(1.5rem, var(--safe-r) + 1.5rem)
+    max(1.5rem, var(--safe-b) + 1.5rem) max(1.5rem, var(--safe-l) + 1.5rem);
+  background: rgba(5, 7,15, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.letter-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.letter-card {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  padding: 2.75rem 1.75rem 2rem;
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(165deg, var(--night-lift), var(--night-soft));
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(16px) scale(0.96);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.letter-overlay.is-open .letter-card {
+  transform: translateY(0) scale(1);
+}
+
+.letter-text {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 4.6vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--star);
+  text-align: center;
+}
+
+.letter-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--star);
+  font-size: 1.4rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.letter-close:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
 
 /* ------------------------------------------------------------
    Sound toggle
